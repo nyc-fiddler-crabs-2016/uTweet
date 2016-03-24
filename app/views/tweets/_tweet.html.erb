@@ -1,0 +1,5 @@
+<%=tweet.tweet_owner%>: <%=tweet.content%><br />
+<%=tweet.time_posted%>
+<% if authorized?(tweet) %>
+  <%= link_to 'Delete Your Tweet', tweet_path(tweet),  method: :delete, data: { confirm: 'Are you sure?' } %><br /><br />
+<% end %>
