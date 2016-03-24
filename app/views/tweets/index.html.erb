@@ -1,0 +1,21 @@
+<h1>Welcome to uTweet!</h1>
+<h2>Here's what's been happening.</h2>
+
+<h3>Write a new tweet:</h3>
+<%=form_for @tweet do |f|%>
+	<%=f.label :content %>
+	<%=f.text_area :content, size: "30" %>
+	<%=f.submit%>
+<% end %><br />
+
+<div class = tweets-container>
+	<% @tweets.each do |tweet| %>
+		<%= render partial: "tweet", locals: {tweet: tweet}%>
+		<%=tweet.tweet_owner%>: <%=tweet.content%><br />
+		<%=tweet.time_posted%>
+		<% if authorized?(tweet) %>
+	  <%= link_to 'Delete Your Tweet', tweet_path(tweet),  method: :delete, data: { confirm: 'Are you sure?' } %><br /><br />
+	  <% end %>
+	<% end %>
+</div>
+
