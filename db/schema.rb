@@ -1,106 +1,27 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: http://ondras.zarovi.cz/sql/demo/ -->
-<sql>
-<datatypes db="mysql">
-	<group label="Numeric" color="rgb(238,238,170)">
-		<type label="Integer" length="0" sql="INTEGER" quote=""/>
-	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
-	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
-	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
-	 	<type label="INT" length="0" sql="INT" quote=""/>
-		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
-		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
-		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
-		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
-	</group>
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
 
-	<group label="Character" color="rgb(255,200,200)">
-		<type label="Char" length="1" sql="CHAR" quote="'"/>
-		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
-		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
-		<type label="Binary" length="1" sql="BINARY" quote="'"/>
-		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
-		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
-	</group>
+ActiveRecord::Schema.define(version: 20160324135400) do
 
-	<group label="Date &amp; Time" color="rgb(200,255,200)">
-		<type label="Date" length="0" sql="DATE" quote="'"/>
-		<type label="Time" length="0" sql="TIME" quote="'"/>
-		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
-		<type label="Year" length="0" sql="YEAR" quote=""/>
-		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
-	</group>
-	
-	<group label="Miscellaneous" color="rgb(200,200,255)">
-		<type label="ENUM" length="1" sql="ENUM" quote=""/>
-		<type label="SET" length="1" sql="SET" quote=""/>
-		<type label="Bit" length="0" sql="bit" quote=""/>
-	</group>
-</datatypes><table x="988" y="166" name="Users">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="username" null="1" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-<default>NULL</default></row>
-<row name="email" null="1" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-<default>NULL</default></row>
-<row name="password_digest" null="1" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-<default>NULL</default></row>
-<row name="created_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="updated_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="324" y="176" name="tweets">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="content" null="1" autoincrement="0">
-<datatype>MEDIUMTEXT(content)</datatype>
-<default>NULL</default></row>
-<row name="poster_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Users" row="id" />
-</row>
-<row name="created_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="updated_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="313" y="427" name="Relationships">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="follower_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Users" row="id" />
-</row>
-<row name="followed_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Users" row="id" />
-</row>
-<row name="created_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="updated_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-</sql>
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "users", force: true do |t|
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+end
