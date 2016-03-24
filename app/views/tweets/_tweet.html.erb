@@ -1,3 +1,12 @@
+  <div id="follow_form">
+  <% unless current_user?(tweet.poster) %>
+	  <% if current_user.following?(tweet.poster) %>
+	    <%= render 'unfollow', tweet: tweet %>
+	  <% else %>
+	    <%= render 'follow', tweet: tweet %>
+	  <% end %>
+	<% end %>
+  </div>
 <%=tweet.tweet_owner%>: <%=tweet.content%><br />
 <%=tweet.time_posted%>
 <% if authorized?(tweet) %>
