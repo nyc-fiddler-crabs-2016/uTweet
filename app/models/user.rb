@@ -3,4 +3,7 @@ class User < ActiveRecord::Base
   validates :email, :username, presence: true, uniqueness: true
   validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
 
+  has_many :tweets
+  has_many :followers, through: :relationships, source: :follower
+  has_many :followed_users, through: :relationships, source: :followed
 end
