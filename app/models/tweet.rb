@@ -7,4 +7,8 @@ class Tweet < ActiveRecord::Base
   def tweet_owner
     poster.username
   end
+
+  def time_posted
+    "Posted on: " + created_at.strftime("%m-%d-%Y") + ", at " + created_at.strftime("%I:%M%p")
+  end
 end
