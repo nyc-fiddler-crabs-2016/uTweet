@@ -1,4 +1,4 @@
-  <div id="follow_form">
+ <div id="follow_form">
   <% unless current_user?(tweet.poster) %>
 	  <% if current_user.following?(tweet.poster) %>
 	    <%= render 'unfollow', tweet: tweet %>
