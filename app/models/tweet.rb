@@ -4,4 +4,7 @@ class Tweet < ActiveRecord::Base
 
   belongs_to :poster, class_name: "User"
 
+  def tweet_owner
+    poster.username
+  end
 end
