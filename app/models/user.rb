@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     followings.build
   end
 
-  def locate_follower(other_user)
+  def locate_followed_user(other_user)
     followings.find_by(followed_id: other_user.id)
   end
 
