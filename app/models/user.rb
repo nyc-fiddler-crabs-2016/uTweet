@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :tweets, foreign_key: "poster_id", dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
-  
+
   has_many :followings, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :follows, foreign_key: "followed_id", class_name: "Relationship", dependent: :destroy
 
@@ -24,9 +24,17 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  def follow_user
+    followings.build
+  end
+
+  def locate_follower(other_user)
+    followings.find_by(followed_id: other_user.id)
+  end
+
   def current_followers
-    following.count.to_s
-  end 
+    followers.count.to_s
+  end
 
   def current_followed_users
     following.count.to_s
