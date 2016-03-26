@@ -1,12 +1,15 @@
-<h1>Welcome to uTweet!</h1>
-<h2>Here's what's been happening.</h2>
+<h1>Hello, <%=current_user.username%>!</h1>
 
+<section id = "new-tweet-form">
 <h3>Write a new tweet:</h3>
-<%=form_for @tweet, url: tweets_path do |f|%>
-	<%=f.label :content %>
-	<%=f.text_area :content, size: "30" %>
-	<%=f.submit%>
-<% end %><br />
+  <%=form_for @tweet, url: tweets_path do |f|%>
+    <%=f.label :content %>
+    <%=f.text_area :content, size: "30" %>
+    <%=f.submit%>
+  <% end %><br />
+</section>
+
+<h2>Here's what's been happening.</h2>
 
 <%=render @tweets %>
 

@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header>
+<nav>
   <% if current_user %>
     <%= link_to 'Tweets', tweets_path%>
     <%= link_to 'Profile', user_path(current_user.id) %>
@@ -16,9 +16,11 @@
     <%= link_to 'Login', new_session_path %>
     <%= link_to 'Signup', new_user_path %>
   <% end %>
-</header>
+</nav>
+  <% if flash.present? %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
 
-<%= render 'layouts/flash' %>
 <%= yield %>
 
 </body>
