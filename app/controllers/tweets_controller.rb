@@ -11,9 +11,15 @@ class TweetsController < ApplicationController
 
   def create
     tweet = Tweet.new(tweet_params)
+    p tweet_params
       if tweet.save
-        flash[:notice] = "Your tweet was posted!"
-        redirect_to tweets_path
+        if request.xhr?
+          "Here"
+          render "tweets/_tweet", locals: {tweet: tweet}, layout: false
+        else
+          flash[:notice] = "Your tweet was posted!"
+          redirect_to tweets_path
+        end
       else
         flash[:notice] = "Your tweet must be between 5 and 140 characters"
         @tweet = Tweet.new
